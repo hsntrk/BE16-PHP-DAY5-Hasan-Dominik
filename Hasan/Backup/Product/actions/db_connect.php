@@ -1,5 +1,5 @@
 <?php
-$localhost = "127.0.0.1";
+$localhost = "localhost";
 $username = "root";
 $password = "";
 $dbname = "crud_example";
@@ -18,8 +18,7 @@ try {
     echo "Failed to connect: " . mysqli_connect_error();
 }
 
-function var_dump_pretty($var)
-{
+function var_dump_pretty($var){
     echo "<pre>";
     var_dump($var);
     echo "</pre>";

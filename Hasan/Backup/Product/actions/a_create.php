@@ -44,8 +44,8 @@ if ($_POST) {
             <h1>Create request response</h1>
         </div>
         <div class="alert alert-<?php echo $class; ?>" role="alert">
-            <p><?php echo ($message) ?? '' ?></p>
-            <p><?php echo ($uploadError) ?? '' ?></p>
+            <p><?php echo ($message) ?? ''?></p>
+            <p><?php echo ($uploadError) ?? ''?></p>
             <a href='../index.php'><button class="btn btn-primary" type='button'>Home</button></a>
         </div>
     </div>

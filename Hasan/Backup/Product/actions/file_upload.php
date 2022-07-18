@@ -1,5 +1,6 @@
 <?php
 require_once "db_connect.php";
+session_start();
 
 function file_upload($picture, $type = "product")
 {
@@ -28,7 +29,7 @@ function file_upload($picture, $type = "product")
             if ($fileError == 0) {
                 if ($fileSize < 500000) {
                     $fileNewName = uniqid('') . "." . $fileExtension;
-                    $destination = "pictures/$fileNewName";
+                    $destination = "../pictures/$fileNewName";
                     if (move_uploaded_file($fileTmpName, $destination)) {
                         $result->error = 0;
                         $result->fileName = $fileNewName;

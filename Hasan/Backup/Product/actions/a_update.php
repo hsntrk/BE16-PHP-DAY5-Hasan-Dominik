@@ -10,18 +10,18 @@ if ($_POST) {
     $picture = file_upload($_FILES['picture']);
     if ($picture->error === 0) {
         ($_POST['picture'] == "product.png") ?: unlink("../pictures/$_POST[picture]");
-        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName' WHERE id = {$id}";
+        $sql = "UPDATE products SET name = '$name', price = $price, picture '$picture->fileName' WHERE id = {$id}";
     } else {
         $sql = "UPDATE products SET name = '$name', price = $price WHERE id = {$id}";
     }
     if (mysqli_query($connect, $sql)) {
         $class = "success";
         $message = "The record was successfully updated";
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
-    } else {
+        $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
+    }else{
         $class = "danger";
-        $message = "Error while updating record : <br>" . mysqli_connect_error();
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
+       $message = "Error while updating record : <br>" . mysqli_connect_error();
+       $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     }
     mysqli_close($connect);
 } else {
@@ -36,7 +36,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once "../components/boot.php" ?>
+    <?php require_once "../components/boot.php"?>
     <title>CRUD</title>
 </head>
 
@@ -48,7 +48,7 @@ if ($_POST) {
         <div class="alert alert-<?php echo $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>
             <p><?php echo ($uploadError) ?? ''; ?></p>
-            <a href='../update.php?id=<?php echo $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a>
+            <a href='../update.php?id=<?php echo $id;?>'><button class="btn btn-warning" type='button'>Back</button></a>
             <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
         </div>
     </div>
