@@ -71,9 +71,10 @@ mysqli_close($connect);
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img class="userImage" src="pictures/admavatar.png" alt="Adm avatar">
+                <img class="userImage" src="pictures/DSC_0362.jpg" alt="Adm avatar">
                 <p class="">Administrator</p>
-                <a href="logout.php?logout">Sign Out</a>
+                <a href="logout.php?logout" class = "btn btn-danger">Sign Out</a>
+                <a href="CRUD/index.php" class = "btn btn-success">Products</a>
             </div>
             <div class="col-8 mt-2">
                 <p class='h2'>Users</p>

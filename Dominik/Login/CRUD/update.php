@@ -1,3 +1,5 @@
+<?php require_once 'components/boot.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
