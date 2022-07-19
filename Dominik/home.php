@@ -17,7 +17,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 $res = mysqli_query($connect, "SELECT * FROM users WHERE id=" . $_SESSION['user']);
 $row2 = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM `products` left JOIN suppliers ON products.fk_supplierId = suppliers.supplierId;";
 $result = mysqli_query($connect, $sql);
 $tbody = ''; //this variable will hold the body for the table
 if (mysqli_num_rows($result)  > 0) {
@@ -25,8 +25,9 @@ if (mysqli_num_rows($result)  > 0) {
         $tbody .= "<tr class ='align-middle'>
             <td class = 'text-center d-flex justify-content-center'><img class='img-thumbnail' style = 'width: 10rem' src='pictures/" . $row['picture'] . "'</td>
             <td class = 'text-center'>" . $row['name'] . "</td>
+            <td class = 'text-center'>" .$row['sup_name']."</td>
             <td class = 'text-center'>" . "€". $row['price'] . "</td>
-            <td class = 'text-center '> <button class = 'btn btn-success text-center'>Book </button></td>
+            <td class = 'text-center'><a class='btn btn-success' href='booking.php?id=" . $row['id'] . "'>Booking</a></td>
             </tr>";
     };
 } else {
@@ -72,6 +73,7 @@ mysqli_close($connect);
                 <tr>
                     <th class = "text-center">Picture</th>
                     <th class = "text-center">Room</th>
+                    <th class = "text-center">Supplier</th>
                     <th class = "text-center">Price</th>
                     <th class = "text-center">Booking</th>
                 </tr>
